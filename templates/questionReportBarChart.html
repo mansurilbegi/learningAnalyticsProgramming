@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Question {{questionNo}} Report</title>
+<link
+      rel="stylesheet"
+      href="/static/questionReportBarChart.css"
+      type="text/css"
+/>
+<link rel="icon" type="image/x-icon" href="/static/pythonLogo.jpeg" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<link rel="icon" type="image/x-icon" href="/static/pythonLogo.jpeg">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+</style>
+</head>
+<body>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-blue w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:210px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>LAP :<br>Learning Analytics<br>in Programming</b></h3>
+  </div>
+  <div class="w3-bar-block">
+   <a href="/coursesPage" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a>
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">About</a>
+    <a href="/logout" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Logout</a>
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
+  <span>Company Name</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:220px;margin-right:10px">
+
+
+<br />
+    <div class="container">
+      <p>
+        {{selectedCourse}} - {{selectedModule}} / Question {{questionNo}} Report
+      </p>
+
+
+        <label class="lbl">
+          <input type="radio" name="chartType" value="1" />
+          All </br>
+        </label>
+
+        <label class="lbl">
+          <input type="radio" name="chartType" value="2" />
+          Solved and Attempts 1-5 </br>
+        </label>
+
+        <label class="lbl">
+          <input type="radio" name="chartType" value="3" />
+          Solved and Attempts 6-10 </br>
+        </label>
+
+        <label>
+          <input type="radio" name="chartType" value="4" />
+          Solved and Attempts 10+ </br>
+        </label>
+
+        <label class="lbl">
+          <input type="radio" name="chartType" value="5" />
+          Unsolved </br>
+        </label>
+
+        <label class="lbl">
+          <input type="radio" name="chartType" value="6" />
+          Attended Students </br>
+        </label>
+
+        <label class="lbl">
+          <input type="radio" name="chartType" value="7" />
+          Not Attended Students </br>
+        </label>
+
+      <canvas id="myChart"></canvas>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <!-- Rest of the HTML template -->
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          var radioButtons = document.getElementsByName("chartType");
+          var chart = null; // Variable to store the Chart object
+
+          function handleRadioChange() {
+            var selectedChartType = "";
+            for (var i = 0; i < radioButtons.length; i++) {
+              if (radioButtons[i].checked) {
+                selectedChartType = radioButtons[i].value;
+                break;
+              }
+            }
+
+            var xmlhttp = new XMLHttpRequest(); // Initialize the xmlhttp object
+
+            // Call the function in main.py with the selected chart type
+            xmlhttp.onreadystatechange = function () {
+              if (this.readyState == 4 && this.status == 200) {
+                const dataLabels = JSON.parse(xmlhttp.responseText);
+                console.log(dataLabels);
+                const data = dataLabels.pop();
+                console.log(dataLabels);
+                console.log(data);
+
+                const ctx = document.getElementById("myChart");
+
+                // Destroy the previous Chart object if it exists
+                if (chart) {
+                  chart.destroy();
+                }
+
+                chart = new Chart(ctx, {
+                  type: "bar",
+                  data: {
+                    labels: dataLabels,
+                    datasets: [
+                      {
+                        label: "# of Exceptions",
+                        data: data,
+                        borderWidth: 1,
+                      },
+                    ],
+                  },
+                  options: {
+                    scales: {
+                      y: {
+                        beginAtZero: true,
+                      },
+                    },
+                  },
+                });
+              }
+            };
+
+            xmlhttp.open("GET", "/gethint?q=" + selectedChartType, true);
+            xmlhttp.send();
+          }
+
+          // Attach the handleRadioChange function to the change event of the radio buttons
+          for (var i = 0; i < radioButtons.length; i++) {
+            radioButtons[i].addEventListener("change", handleRadioChange);
+          }
+        });
+      </script>
+
+      <script></script>
+    </div>
+    <br /><br />
+    <div style="text-align: center">
+      <a href="/selectedModulePage"
+        ><input class="btn" type="Button" value="Back"
+      /></a>
+    </div>
+</div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+</script>
+
+</body>
+</html>

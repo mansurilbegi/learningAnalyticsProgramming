@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="static/registerstyle.css" type="text/css">
+    <link rel="icon" type="image/x-icon" href="/static/pythonLogo.jpeg">
+</head>
+<body>
+<div class="container">
+    <form action="/register" method="POST">
+        <div class="box">
+            <h3>Register</h3>
+            <div class="username">
+                <input type="text" placeholder="Username" id="username" name="username">
+            </div>
+            <div class="password">
+                <input type="password" placeholder="Password" id="password", name="password">
+            </div>
+
+            <div class="name">
+                <input type="name" placeholder="Name" id="name", name="name">
+            </div>
+
+            <div class="surname">
+                <input type="surname" placeholder="Surname" id="surname", name="surname">
+            </div>
+            <div>
+                <input id="instructor" type="radio" name="user_type" value="1">
+                <label for="instructor"><span></span>Instructor</label>
+
+                <input id="student" type="radio" name="user_type" value="2">
+                <label for="student"><span></span>Student</label>
+            </div>
+            <br/><br/>
+            <div>
+                <p>Click <a href="/">here</a> to login if you have an account.</p><br/>
+            </div>
+
+            <div class="button">
+                <button id="send" type="submit" value="Register">Register</button>
+            </div>
+
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert warning">
+                        <span class="alertText"><strong>Warning!</strong> {{ message }}
+                        <br class="clear"/></span>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

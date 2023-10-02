@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LAP</title>
+    <link rel="stylesheet" href="/static/indexstyle.css" type="text/css">
+    <link rel="icon" type="image/x-icon" href="/static/pythonLogo.jpeg">
+</head>
+<body>
+<div class="container">
+    <form action="/login" method="POST">
+        <div class="box">
+            <h3>Login</h3>
+            <div class="username">
+                <input type="text" placeholder="Username" id="username" name="username">
+            </div>
+            <div class="password">
+                <input type="password" placeholder="Password" id="password" name="password">
+            </div>
+
+            <div>
+                <p>Click <a href="/registerPage">here</a> to register if you don't have account.</p><br/>
+            </div>
+
+            <div class="button">
+                <button id="send" type="submit" value="Login">Login</button>
+            </div>
+
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert warning">
+                        <span class="alertText"><strong>Warning!</strong> {{ message }}
+                        <br class="clear"/></span>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+        </div>
+    </form>
+    </div>
+</body>
+</html>

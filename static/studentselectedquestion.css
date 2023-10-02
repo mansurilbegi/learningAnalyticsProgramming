@@ -1,0 +1,68 @@
+.btn {
+  border-color: white;
+  color: #888888;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.btn:hover {
+  background: white;
+  color: #383838;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+textarea {
+  width: 50%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  font-size: 16px;
+  resize: none;
+  width: 100%;
+}
+
+.title{
+  background-color: #72A0C1;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 4px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.pbody{
+  background-color: white;
+  border: none;
+  color: black;
+  padding: 15px 5px;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 4px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#interpreteroutput{
+  background-color: white;
+  border: none;
+  color: black;
+  font-size: 16px;
+  padding: 15px 32px;
+  border-radius: 4px;
+  font-family: Arial, Helvetica, sans-serif;
+}

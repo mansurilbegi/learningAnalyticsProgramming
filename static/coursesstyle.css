@@ -1,0 +1,103 @@
+table {
+
+
+  border-collapse: separate;
+  border-spacing: 0;
+  color: #4a4a4d;
+  background-color: #fff;
+  font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+
+
+
+}
+th, td {
+  padding: 10px 15px;
+  vertical-align: middle;
+}
+
+.buttonUpdate {
+  background-color: #8FBC8B;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+
+}
+
+.btn {
+  border-color: white;
+  color: #888888;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.btn:hover {
+  background: white;
+  color: #383838;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.buttonDelete {
+  background-color: #fd5c63;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+
+}
+
+.buttonCourse {
+  background-color: #72A0C1;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+
+}
+
+.buttonCreateReport {
+  background-color: #72A0C1;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+
+}
+
+body{
+  text-align: center;
+}
+
+table, th, td {
+  border: 1px solid black;
+}

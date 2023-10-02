@@ -1,0 +1,64 @@
+
+/* Style the container */
+.container {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  top: 0px;
+  bottom: 0px;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  width: 60%;
+}
+
+div {
+  align-items: center;
+}
+
+#barChart {
+  display: none;
+}
+
+#pieChart {
+  display: block;
+}
+
+.btn {
+  border-color: white;
+  color: #888888;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.btn:hover {
+  background: white;
+  color: #383838;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.lbl{
+    text-align: left;
+}
+
+p {
+  background-color: #72a0c1;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 4px;
+}
